@@ -34,7 +34,7 @@ export class ListComponent implements OnInit {
     this.getTopics();
   }
 
-  getTopics(){
+  getTopics() {
     var userId = this.identity._id;
     this._topicService.getTopicsByUser(userId).subscribe(
       response => {
@@ -48,22 +48,19 @@ export class ListComponent implements OnInit {
     );
   }
 
-  onSubmit(form) {
-    /*this._topicService.addTopic(this.token, this.topic).subscribe(
+  deleteTopic(id) {
+    this._topicService.delete(this.token, id).subscribe(
       response => {
-        if (response.topic) {
-          this.status = 'success';
-          this.topic = response.topic;
-          this._router.navigate(['/panel']);
-        } else {
-          this.status = 'error';
-        }
+        this.getTopics();
       },
       error => {
-        this.status = 'error';
         console.log(error);
       }
-    );*/
+    );
+  }
+
+  onSubmit(form) {
+
   }
 
 }

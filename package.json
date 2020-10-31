@@ -21,7 +21,7 @@
     "@angular/router": "~10.1.6",
     "@nowzoo/ngx-highlight-js": "~2.1.15",
     "@nowzoo/sheetload": "~0.0.7",
-    "angular-file-uploader": "5.0.2",
+    "angular-file-uploader": "7.0.2",
     "angular2-moment": "~1.9.0",
     "bootstrap": "~4.5.3",
     "jquery": "~3.5.1",
