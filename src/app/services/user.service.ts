@@ -16,10 +16,6 @@ export class UserService {
     this.url = global.url;
   }
 
-  prueba() {
-    return "Hola mundo desde el servicio de angular";
-  }
-
   register(user): Observable<any> {
     // Convertir el objeto del usuario a un json string
     let params = JSON.stringify(user);
@@ -68,9 +64,17 @@ export class UserService {
   update(user): Observable<any> {
     let params = JSON.stringify(user);
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
-                                   .set('Authorization', this.getToken());
+      .set('Authorization', this.getToken());
 
     return this._http.put(this.url + 'user/update', params, { headers: headers });
+  }
+
+  getUsers(): Observable<any> {
+    return this._http.get(this.url + 'users');
+  }
+
+  getUser(userId): Observable<any> {
+    return this._http.get(this.url + 'user/' + userId);
   }
 }
 

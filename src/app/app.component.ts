@@ -14,6 +14,7 @@ export class AppComponent implements OnInit, DoCheck {
   public identity;
   public token;
   public url;
+  public search;
 
   constructor(
     private _userService: UserService,
@@ -26,8 +27,6 @@ export class AppComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    //console.log(this.identity);
-    //console.log(this.token);
   }
 
   ngDoCheck() {
@@ -39,6 +38,10 @@ export class AppComponent implements OnInit, DoCheck {
     this.identity = null;
     this.token = null;
     this._router.navigate(['/inicio']);
+  }
+
+  goSearch(){
+    this._router.navigate(['/buscar', this.search]);
   }
 }
 

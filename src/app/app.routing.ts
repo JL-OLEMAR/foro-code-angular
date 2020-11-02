@@ -11,6 +11,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { TopicsComponent } from './components/topics/topics.component';
 import { TopicDetailComponent } from './components/topic-detail/topic-detail.component';
+import { UsersComponent } from './components/users/users.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { SearchComponent } from './components/search/search.component';
 
 // Array de rutas
 const appRoutes: Routes = [
@@ -21,7 +24,10 @@ const appRoutes: Routes = [
   { path: 'ajustes', canActivate: [UserGuard], component: UserEditComponent },
   { path: 'temas', component: TopicsComponent },
   { path: 'temas/:page', component: TopicsComponent },
-  { path: 'tema/:id', component: TopicDetailComponent },
+  { path: 'tema/:id', canActivate: [UserGuard], component: TopicDetailComponent },
+  { path: 'usuarios', component: UsersComponent },
+  { path: 'perfil/:id', canActivate: [UserGuard], component: ProfileComponent },
+  { path: 'buscar/:search', component: SearchComponent },
   { path: '**', component: HomeComponent }
 ];
 

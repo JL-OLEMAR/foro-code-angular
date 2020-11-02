@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Topic } from '../../models/topic';
+import { User } from '../../models/user';
 import { TopicService } from '../../services/topic.service';
 
 @Component({
@@ -13,11 +14,13 @@ import { TopicService } from '../../services/topic.service';
 export class TopicsComponent implements OnInit {
   public page_title: string;
   public topics: Topic[];
+  public user: User;
   public totalPages;
   public page;
   public next_page;
   public prev_page;
   public number_pages;
+  public is_search;
 
   constructor(
     private _route: ActivatedRoute,
@@ -25,6 +28,7 @@ export class TopicsComponent implements OnInit {
     private _topicService: TopicService
   ) {
     this.page_title = 'Temas';
+    this.is_search = false;
   }
 
   ngOnInit() {
@@ -47,7 +51,7 @@ export class TopicsComponent implements OnInit {
       response => {
         if (response.topics) {
           this.topics = response.topics;
-
+          console.log(this.topics);
           // Navegacion de paginacion
           this.totalPages = response.totalPages;
 
